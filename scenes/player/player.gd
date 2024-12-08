@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 const SPEED:int = 350;
 
+signal laser_input;
+signal granade_input;
+
 var can_laser: bool = true;
 var can_granade: bool = true;
 
@@ -17,22 +20,25 @@ func _process(_delta: float) -> void:
 	# Laser shooting input
 	if Input.is_action_pressed("primaty-action") and can_laser:
 		can_laser = false;
-		$LaserTimer.start();
+		laser_input.emit();
+		$LaserReloadTimer.start();
 
 	# Granade shooting input	
 	if Input.is_action_pressed("secondary-action") and can_granade:
 		can_granade = false;
-		$GranadeTimer.start();
+		granade_input.emit();
+		$GranadeReloadTimer.start();
 
 func movement() -> void:
 	var direction = Input.get_vector("left","right","up","down");
 	velocity = direction * SPEED;
 	move_and_slide();
 
-
-func _on_granade_timer_timeout() -> void:
-	can_granade = true;
-
-
-func _on_laser_timer_timeout() -> void:
+func _on_laser_reload_timer_timeout() -> void:
 	can_laser = true;
+	pass # Replace with function body.
+
+
+func _on_granade_reload_timer_timeout() -> void:
+	can_granade = true;
+	pass # Replace with function body.

@@ -11,6 +11,17 @@ func _process(_delta: float) -> void:
 	pass
 
 
-func _on_gate_player_entered_gate() -> void:
+func _on_gate_player_entered_gate(body) -> void:
 	print("player has entered the gate");
+	print(body);
+	pass # Replace with function body.
+
+
+func _on_player_granade_input() -> void:
+	print("granade input!");
+	pass # Replace with function body.
+
+
+func _on_player_laser_input() -> void:
+	print("laser from level!");
 	pass # Replace with function body.
