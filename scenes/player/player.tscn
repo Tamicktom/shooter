@@ -19,9 +19,11 @@ shape = SubResource("CapsuleShape2D_6npak")
 
 [node name="LaserTimer" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
 
 [node name="GranadeTimer" type="Timer" parent="."]
 wait_time = 2.0
+one_shot = true
 
 [connection signal="timeout" from="LaserTimer" to="." method="_on_laser_timer_timeout"]
 [connection signal="timeout" from="GranadeTimer" to="." method="_on_granade_timer_timeout"]
