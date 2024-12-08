@@ -10,6 +10,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	movement(delta);
+	
+	# Laser shooting input
+	if Input.is_action_pressed("primaty-action"):
+		print("Shoot");
+	
+	if Input.is_action_pressed("secondary-action"):
+		print("Granade");
 	pass
 
 func movement(delta: float) -> void:
