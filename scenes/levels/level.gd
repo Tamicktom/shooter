@@ -1,5 +1,7 @@
 extends Node2D
 
+const SPEED = 250;
+
 var test_array: Array[String] = ["Test", "Banana", "Stuff"];
 
 # Called when the node enters the scene tree for the first time.
@@ -20,6 +22,16 @@ func _process(delta: float) -> void:
 	if $Logo.rotation_degrees > 180:
 		$Logo.rotation_degrees = 0;
 	
-	if $Logo.position.x > 1000:
-		$Logo.pos.x = 0; 
+	movement(delta);
+
 	pass
+
+func movement(delta: float) -> void:
+	if Input.is_action_pressed("left"):
+		$Logo.pos.x -= SPEED * delta;
+	if Input.is_action_pressed("right"):
+		$Logo.pos.x += SPEED * delta;
+	if Input.is_action_pressed("up"):
+		$Logo.pos.y -= SPEED * delta;
+	if Input.is_action_pressed("down"):
+		$Logo.pos.y += SPEED * delta;
