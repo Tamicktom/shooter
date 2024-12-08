@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://rttda28unuoi"]
+[gd_scene load_steps=3 format=3 uid="uid://rttda28unuoi"]
+
+[ext_resource type="Texture2D" uid="uid://btddls0s1pmed" path="res://icon.svg" id="1_wwdoy"]
+[ext_resource type="Texture2D" uid="uid://efkf87ctf33l" path="res://graphics/car/main.png" id="2_6bcb7"]
 
 [node name="Level" type="Node2D"]
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(300, 300)
+texture = ExtResource("1_wwdoy")
+
+[node name="Car" type="Sprite2D" parent="Logo"]
+position = Vector2(343, -28)
+scale = Vector2(0.690776, 0.690776)
+texture = ExtResource("2_6bcb7")
