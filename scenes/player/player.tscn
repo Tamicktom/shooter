@@ -16,3 +16,12 @@ texture = ExtResource("1_a0872")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_6npak")
+
+[node name="LaserTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="GranadeTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="LaserTimer" to="." method="_on_laser_timer_timeout"]
+[connection signal="timeout" from="GranadeTimer" to="." method="_on_granade_timer_timeout"]
