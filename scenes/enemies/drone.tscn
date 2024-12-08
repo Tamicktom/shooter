@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvefc8y0to2fo"]
+
+[ext_resource type="Script" path="res://scenes/enemies/drone.gd" id="1_jwkcl"]
+[ext_resource type="Texture2D" uid="uid://6bn3h8aj5npa" path="res://graphics/enemies/drone.png" id="1_oagmf"]
+
+[node name="Drone" type="CharacterBody2D"]
+script = ExtResource("1_jwkcl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_oagmf")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(63.6028, 2.24654)
+scale = Vector2(1.85603, 1.32371)
+polygon = PackedVector2Array(-38.5785, 49.6736, -48.2767, 45.8964, -60.1299, 40.6082, -67.6729, 26.2546, -70.9057, 6.61282, -91.9183, 9.63464, -111.853, 9.63464, -108.082, -11.518, -87.0692, -18.3171, -66.5954, -24.3607, -60.6687, -34.1816, -49.893, -46.2689, -34.2682, -53.068, -20.2598, -47.7798, -10.0229, -38.7143, -3.55748, -29.6489, 16.3776, -27.3826, 39.0066, -25.1162, 45.472, -2.45261, 25.5369, -0.941704, 1.83037, 1.32465, 1.29159, 14.1674, -2.47991, 30.0319, -10.0229, 44.3855, -24.0313, 48.9182)
