@@ -7,5 +7,4 @@
 script = ExtResource("1_65dn7")
 
 [node name="PlayerImage" type="Sprite2D" parent="."]
-position = Vector2(140, 20)
 texture = ExtResource("1_a0872")
