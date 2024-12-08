@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 const SPEED:int = 250;
 
@@ -21,4 +21,5 @@ func _process(delta: float) -> void:
 
 func movement(delta: float) -> void:
 	var direction = Input.get_vector("left","right","up","down");
-	position += direction * SPEED * delta;
+	velocity = direction * SPEED;
+	move_and_slide();
