@@ -11,11 +11,6 @@ func _process(_delta: float) -> void:
 	pass
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("Entered");
-	pass # Replace with function body.
-
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	print("Exited");
+func _on_gate_player_entered_gate() -> void:
+	print("player has entered the gate");
 	pass # Replace with function body.
