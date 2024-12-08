@@ -8,8 +8,8 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	movement(delta);
+func _process(_delta: float) -> void:
+	movement();
 	
 	# Laser shooting input
 	if Input.is_action_pressed("primaty-action"):
@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 		print("Granade");
 	pass
 
-func movement(delta: float) -> void:
+func movement() -> void:
 	var direction = Input.get_vector("left","right","up","down");
 	velocity = direction * SPEED;
 	move_and_slide();
