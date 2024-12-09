@@ -3,7 +3,7 @@ extends CharacterBody2D
 const SPEED: int = 350;
 
 signal laser_input(pos: Vector2);
-signal granade_input;
+signal granade_input(post: Vector2);
 
 var can_laser: bool = true;
 var can_granade: bool = true;
