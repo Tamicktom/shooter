@@ -1,5 +1,7 @@
 extends Node2D
 
+var laser_scene:PackedScene = preload("res://scenes/laser.tscn");
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("level node is ready");	
@@ -12,8 +14,6 @@ func _process(_delta: float) -> void:
 
 
 func _on_gate_player_entered_gate(body) -> void:
-	print("player has entered the gate");
-	print(body);
 	pass # Replace with function body.
 
 
@@ -23,5 +23,12 @@ func _on_player_granade_input() -> void:
 
 
 func _on_player_laser_input() -> void:
-	print("laser from level!");
-	pass # Replace with function body.
+	# Spawn the laser
+	var laser = laser_scene.instantiate();
+	# Update the laser position
+	laser.position = $Player.position;
+	
+	add_child(laser);
+	
+	
+	# Add the laser instance to a Node2D

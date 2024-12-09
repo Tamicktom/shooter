@@ -19,8 +19,11 @@ func _process(_delta: float) -> void:
 	
 	# Laser shooting input
 	if Input.is_action_pressed("primaty-action") and can_laser:
+		# randomly select a marker 2D for the laser start
 		can_laser = false;
 		laser_input.emit();
+		
+		# emit the position we selected
 		$LaserReloadTimer.start();
 
 	# Granade shooting input	
