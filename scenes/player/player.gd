@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-const SPEED:int = 350;
+const SPEED: int = 350;
 
-signal laser_input;
+signal laser_input(pos: Vector2);
 signal granade_input;
 
 var can_laser: bool = true;
@@ -20,8 +20,11 @@ func _process(_delta: float) -> void:
 	# Laser shooting input
 	if Input.is_action_pressed("primaty-action") and can_laser:
 		# randomly select a marker 2D for the laser start
+		var laser_markers = $LaserStartPositions.get_children();
+		var selected_marker = laser_markers[randi() % laser_markers.size()];
+
 		can_laser = false;
-		laser_input.emit();
+		laser_input.emit(selected_marker.global_position);
 		
 		# emit the position we selected
 		$LaserReloadTimer.start();
@@ -33,7 +36,7 @@ func _process(_delta: float) -> void:
 		$GranadeReloadTimer.start();
 
 func movement() -> void:
-	var direction = Input.get_vector("left","right","up","down");
+	var direction = Input.get_vector("left", "right", "up", "down");
 	velocity = direction * SPEED;
 	move_and_slide();
 
