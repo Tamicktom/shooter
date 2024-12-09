@@ -18,7 +18,7 @@ func _on_gate_player_entered_gate(body) -> void:
 
 
 func _on_player_granade_input() -> void:
-	print("granade input!");
+	print("granade from level!");
 	pass # Replace with function body.
 
 
