@@ -31,8 +31,12 @@ func _process(_delta: float) -> void:
 
 	# Granade shooting input	
 	if Input.is_action_pressed("secondary-action") and can_granade:
+		var granade_markers = $LaserStartPositions.get_children();
+		var selected_marker = granade_markers[randi() % granade_markers.size()];
+
 		can_granade = false;
-		granade_input.emit();
+		# emit the position we selected
+		granade_input.emit(selected_marker.global_position);
 		$GranadeReloadTimer.start();
 
 func movement() -> void:
