@@ -1,6 +1,7 @@
 extends Node2D
 
 var laser_scene:PackedScene = preload("res://scenes/laser.tscn");
+var granade_scene:PackedScene = preload("res://scenes/granade.tscn");
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,6 +20,9 @@ func _on_gate_player_entered_gate(body) -> void:
 
 func _on_player_granade_input() -> void:
 	print("granade from level!");
+	var granade = granade_scene.instantiate();
+	granade.position = $Player.position;
+	add_child(granade);
 	pass # Replace with function body.
 
 
