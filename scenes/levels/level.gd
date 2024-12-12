@@ -25,5 +25,6 @@ func _on_player_laser_input(pos: Vector2, direction: Vector2) -> void:
 	var laser: Area2D = laser_scene.instantiate();
 	# Update the laser position
 	laser.position = pos;
+	laser.direction = direction;
 	laser.rotation = direction.angle();
 	$Projectiles.add_child(laser);

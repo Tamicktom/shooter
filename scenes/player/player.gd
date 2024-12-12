@@ -10,6 +10,7 @@ var can_granade: bool = true;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$LaserReloadTimer.wait_time = 0.25;
 	pass # Replace with function body.
 
 
@@ -25,9 +26,10 @@ func _process(_delta: float) -> void:
 		# randomly select a marker 2D for the laser start
 		var laser_markers = $LaserStartPositions.get_children();
 		var selected_marker = laser_markers[randi() % laser_markers.size()];
+		var player_direction = (get_global_mouse_position() - position).normalized();
 
 		can_laser = false;
-		laser_input.emit(selected_marker.global_position, selected_marker.global_position - global_position);
+		laser_input.emit(selected_marker.global_position, player_direction);
 		
 		# emit the position we selected
 		$LaserReloadTimer.start();
