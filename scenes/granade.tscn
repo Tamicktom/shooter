@@ -4,7 +4,8 @@
 [ext_resource type="Script" path="res://scenes/granade.gd" id="1_8ilee"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_382wm"]
-bounce = 30.0
+friction = 10.0
+bounce = 0.4
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2fjo5"]
 radius = 74.0608
@@ -12,6 +13,7 @@ radius = 74.0608
 [node name="Granade" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_382wm")
 gravity_scale = 0.0
+angular_damp = 1.6
 script = ExtResource("1_8ilee")
 
 [node name="Grenade" type="Sprite2D" parent="."]

@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 const SPEED: int = 350;
 
-signal laser_input(pos: Vector2);
-signal granade_input(post: Vector2);
+signal laser_input(pos: Vector2, direction: Vector2);
+signal granade_input(pos: Vector2, direction: Vector2);
 
 var can_laser: bool = true;
 var can_granade: bool = true;
@@ -16,6 +16,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	movement();
+
+	# Rotate the player to face the mouse position
+	look_at(get_global_mouse_position());
 	
 	# Laser shooting input
 	if Input.is_action_pressed("primaty-action") and can_laser:
@@ -24,7 +27,7 @@ func _process(_delta: float) -> void:
 		var selected_marker = laser_markers[randi() % laser_markers.size()];
 
 		can_laser = false;
-		laser_input.emit(selected_marker.global_position);
+		laser_input.emit(selected_marker.global_position, selected_marker.global_position - global_position);
 		
 		# emit the position we selected
 		$LaserReloadTimer.start();
@@ -33,10 +36,10 @@ func _process(_delta: float) -> void:
 	if Input.is_action_pressed("secondary-action") and can_granade:
 		var granade_markers = $LaserStartPositions.get_children();
 		var selected_marker = granade_markers[randi() % granade_markers.size()];
-
+		var player_direction = (get_global_mouse_position() - position).normalized();
 		can_granade = false;
 		# emit the position we selected
-		granade_input.emit(selected_marker.global_position);
+		granade_input.emit(selected_marker.global_position, player_direction);
 		$GranadeReloadTimer.start();
 
 func movement() -> void:

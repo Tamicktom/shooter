@@ -14,15 +14,16 @@ func _process(_delta: float) -> void:
 func _on_gate_player_entered_gate(_body: Node2D) -> void:
 	pass; # Replace with function body.
 
-func _on_player_granade_input(pos: Vector2) -> void:
+func _on_player_granade_input(pos: Vector2, direction: Vector2) -> void:
 	var granade: RigidBody2D = granade_scene.instantiate();
 	granade.position = pos;
-	granade.linear_velocity = Vector2.UP * 100;
+	granade.linear_velocity = direction * granade.SPEED;
 	$Projectiles.add_child(granade);
 
-func _on_player_laser_input(pos: Vector2) -> void:
+func _on_player_laser_input(pos: Vector2, direction: Vector2) -> void:
 	# Spawn the laser
 	var laser: Area2D = laser_scene.instantiate();
 	# Update the laser position
 	laser.position = pos;
+	laser.rotation = direction.angle();
 	$Projectiles.add_child(laser);

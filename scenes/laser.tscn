@@ -11,10 +11,12 @@ script = ExtResource("1_1cywu")
 SPEED = 2000
 
 [node name="Blue" type="Sprite2D" parent="."]
+rotation = 1.5708
 texture = ExtResource("1_m6vyv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -42)
+position = Vector2(44, 0)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_kfkla")
 
 [node name="Timer" type="Timer" parent="."]
