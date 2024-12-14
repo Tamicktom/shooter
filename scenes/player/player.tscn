@@ -11,11 +11,12 @@ height = 108.0
 script = ExtResource("1_65dn7")
 
 [node name="PlayerImage" type="Sprite2D" parent="."]
-position = Vector2(40, 3)
+position = Vector2(40, -19)
 rotation = 1.5708
 texture = ExtResource("1_a0872")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -22)
 shape = SubResource("CapsuleShape2D_6npak")
 
 [node name="LaserReloadTimer" type="Timer" parent="."]
@@ -29,13 +30,13 @@ one_shot = true
 [node name="LaserStartPositions" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="LaserStartPositions"]
-position = Vector2(132, 22)
+position = Vector2(132, 0)
 
 [node name="Marker2D2" type="Marker2D" parent="LaserStartPositions"]
-position = Vector2(132, 17)
+position = Vector2(132, -5)
 
 [node name="Marker2D3" type="Marker2D" parent="LaserStartPositions"]
-position = Vector2(132, 27)
+position = Vector2(132, 5)
 
 [connection signal="timeout" from="LaserReloadTimer" to="." method="_on_laser_reload_timer_timeout"]
 [connection signal="timeout" from="GranadeReloadTimer" to="." method="_on_granade_reload_timer_timeout"]
