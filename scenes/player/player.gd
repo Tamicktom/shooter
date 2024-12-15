@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const SPEED: int = 350;
+const RUN_SPEED: int = 700;
 
 signal laser_input(pos: Vector2, direction: Vector2);
 signal granade_input(pos: Vector2, direction: Vector2);
@@ -48,8 +49,13 @@ func _process(_delta: float) -> void:
 		$GranadeReloadTimer.start();
 
 func movement() -> void:
+	var is_running = Input.is_action_pressed("run");
 	var direction = Input.get_vector("left", "right", "up", "down");
-	velocity = direction * SPEED;
+	# velocity = direction * SPEED;
+	if is_running:
+		velocity = direction * RUN_SPEED;
+	else:
+		velocity = direction * SPEED;
 	move_and_slide();
 
 func _on_laser_reload_timer_timeout() -> void:
