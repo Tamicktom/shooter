@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://rttda28unuoi"]
+[gd_scene load_steps=11 format=4 uid="uid://rttda28unuoi"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_ldm8i"]
 [ext_resource type="Texture2D" uid="uid://du4vvxhfqovbd" path="res://graphics/ground/stones.png" id="2_8ku8u"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://chcqbjr0sescy" path="res://scenes/objects/gate.tscn" id="3_hymgg"]
 [ext_resource type="Texture2D" uid="uid://bueg2c3tynk0h" path="res://graphics/decals/dirt_patch.png" id="3_wiip4"]
 [ext_resource type="Texture2D" uid="uid://cul5o3irgbmyy" path="res://graphics/tilesets/outside_walls.png" id="4_kqva8"]
+[ext_resource type="Texture2D" uid="uid://bq1270vpqwu1x" path="res://graphics/tilesets/soil.png" id="5_i7teg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rs1ee"]
 resource_name = "walls"
@@ -22,9 +23,24 @@ texture_region_size = Vector2i(390, 390)
 2:2/0 = 0
 0:3/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qlx2i"]
+resource_name = "soil"
+texture = ExtResource("5_i7teg")
+texture_region_size = Vector2i(390, 390)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_mw1n7"]
 tile_size = Vector2i(390, 390)
 sources/0 = SubResource("TileSetAtlasSource_rs1ee")
+sources/1 = SubResource("TileSetAtlasSource_qlx2i")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ldm8i")
@@ -43,9 +59,14 @@ modulate = Color(0.952941, 0.752941, 0.588235, 1)
 position = Vector2(593, 664)
 texture = ExtResource("3_wiip4")
 
+[node name="Soil2" type="TileMapLayer" parent="Ground"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD+/wMAAAAAAAAAAAADAAMAAAACAAEAAAD//wMAAQAAAAAAAAACAAMAAAABAAAAAAADAAQAAAAAAAIAAAADAAUAAAAAAAMAAAAAAAMAAQABAAAAAAABAAMAAQACAAAAAAD//wQAAQAAAAIAAAABAAQAAQACAAIAAAAAAAQAAQABAAIAAAA=")
+tile_set = SubResource("TileSet_mw1n7")
+
 [node name="Walls" type="TileMapLayer" parent="Ground"]
 use_parent_material = true
-tile_map_data = PackedByteArray("AAD+/wMAAAAAAAAAAAADAAMAAAACAAEAAAD//wMAAAABAAAAAAAAAAMAAAABAAAAAAABAAMAAAABAAAAAAACAAMAAAABAAAAAAADAAQAAAAAAAIAAAADAAUAAAAAAAMAAAA=")
+tile_map_data = PackedByteArray("AAD+/wMAAAAAAAAAAAADAAMAAAACAAEAAAD//wMAAAABAAAAAAACAAMAAAABAAAAAAADAAQAAAAAAAIAAAADAAUAAAAAAAMAAAAAAAMAAAABAAAAAAABAAMAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_mw1n7")
 
 [node name="Gate" parent="." instance=ExtResource("3_hymgg")]
