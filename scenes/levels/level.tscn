@@ -1,11 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://rttda28unuoi"]
+[gd_scene load_steps=6 format=3 uid="uid://rttda28unuoi"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_ldm8i"]
+[ext_resource type="Texture2D" uid="uid://du4vvxhfqovbd" path="res://graphics/ground/stones.png" id="2_8ku8u"]
 [ext_resource type="PackedScene" uid="uid://d1mmobbnafto0" path="res://scenes/player/player.tscn" id="3_7strp"]
 [ext_resource type="PackedScene" uid="uid://chcqbjr0sescy" path="res://scenes/objects/gate.tscn" id="3_hymgg"]
+[ext_resource type="Texture2D" uid="uid://bueg2c3tynk0h" path="res://graphics/decals/dirt_patch.png" id="3_wiip4"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ldm8i")
+
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="Soil" type="Sprite2D" parent="Ground"]
+texture_repeat = 2
+position = Vector2(543, 566)
+texture = ExtResource("2_8ku8u")
+region_enabled = true
+region_rect = Rect2(-2573.04, -2085.57, 7686.4, 5523.25)
+
+[node name="Decoration" type="Sprite2D" parent="Ground"]
+modulate = Color(0.952941, 0.752941, 0.588235, 1)
+position = Vector2(593, 664)
+texture = ExtResource("3_wiip4")
 
 [node name="Gate" parent="." instance=ExtResource("3_hymgg")]
 position = Vector2(-39, -109)
