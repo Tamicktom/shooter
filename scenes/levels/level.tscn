@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://rttda28unuoi"]
+[gd_scene load_steps=12 format=4 uid="uid://rttda28unuoi"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_ldm8i"]
 [ext_resource type="Texture2D" uid="uid://du4vvxhfqovbd" path="res://graphics/ground/stones.png" id="2_8ku8u"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bueg2c3tynk0h" path="res://graphics/decals/dirt_patch.png" id="3_wiip4"]
 [ext_resource type="Texture2D" uid="uid://cul5o3irgbmyy" path="res://graphics/tilesets/outside_walls.png" id="4_kqva8"]
 [ext_resource type="Texture2D" uid="uid://bq1270vpqwu1x" path="res://graphics/tilesets/soil.png" id="5_i7teg"]
-[ext_resource type="Texture2D" uid="uid://c82scnc8esb17" path="res://graphics/tilesets/interior.png" id="6_u5asj"]
+[ext_resource type="PackedScene" uid="uid://dvgjsdbn48dah" path="res://scenes/objects/house.tscn" id="8_ir1xd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rs1ee"]
 resource_name = "walls"
@@ -43,60 +43,6 @@ tile_size = Vector2i(390, 390)
 sources/0 = SubResource("TileSetAtlasSource_rs1ee")
 sources/1 = SubResource("TileSetAtlasSource_qlx2i")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ayfi"]
-resource_name = "interior"
-texture = ExtResource("6_u5asj")
-texture_region_size = Vector2i(390, 390)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-6:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-6:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-0:6/0 = 0
-1:6/0 = 0
-3:6/0 = 0
-5:6/0 = 0
-0:7/0 = 0
-1:7/0 = 0
-2:7/0 = 0
-3:7/0 = 0
-4:7/0 = 0
-6:7/0 = 0
-0:8/0 = 0
-1:8/0 = 0
-2:8/0 = 0
-3:8/0 = 0
-5:8/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_wcrfs"]
-tile_size = Vector2i(390, 390)
-sources/0 = SubResource("TileSetAtlasSource_0ayfi")
-
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ldm8i")
 
@@ -124,8 +70,8 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAD+/wMAAAAAAAAAAAADAAMAAAACAAEAAAD//wMAAAABAAAAAAACAAMAAAABAAAAAAADAAQAAAAAAAIAAAADAAUAAAAAAAMAAAAAAAMAAAABAAAAAAABAAMAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_mw1n7")
 
-[node name="Interior" type="TileMapLayer" parent="Ground"]
-tile_set = SubResource("TileSet_wcrfs")
+[node name="House" parent="." instance=ExtResource("8_ir1xd")]
+position = Vector2(2220, -793)
 
 [node name="Gate" parent="." instance=ExtResource("3_hymgg")]
 position = Vector2(-39, -109)

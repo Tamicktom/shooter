@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=4 uid="uid://dvgjsdbn48dah"]
+
+[ext_resource type="Texture2D" uid="uid://c82scnc8esb17" path="res://graphics/tilesets/interior.png" id="1_nnraa"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_13uy4"]
+resource_name = "interior"
+texture = ExtResource("1_nnraa")
+texture_region_size = Vector2i(390, 390)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+6:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+6:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+3:6/0 = 0
+5:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+6:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+5:8/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5txs4"]
+tile_size = Vector2i(390, 390)
+sources/0 = SubResource("TileSetAtlasSource_13uy4")
+
+[node name="House" type="Area2D"]
+
+[node name="Floor" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAACAAEAAAABAAEAAAABAAEAAAABAAEAAAAAAAEAAAABAAEAAAD//wEAAAABAAEAAAD//wAAAAABAAEAAAADAAAAAAABAAEAAAADAAEAAAABAAEAAAADAP//AAABAAEAAAACAP//AAABAAEAAAABAP//AAABAAEAAAAAAP//AAABAAEAAAD/////AAABAAEAAAD+/wAAAAAAAAEAAAD+////AAAAAAEAAAD+/wEAAAAAAAEAAAAEAAEAAAACAAEAAAAEAAAAAAACAAEAAAAEAP//AAACAAEAAAADAAIAAAABAAIAAAACAAIAAAABAAIAAAABAAIAAAABAAIAAAAAAAIAAAABAAIAAAD//wIAAAABAAIAAAADAP7/AAABAAAAAAACAP7/AAABAAAAAAABAP7/AAABAAAAAAAAAP7/AAABAAAAAAD///7/AAABAAAAAAD+//7/AAAAAAAAAAD+/wIAAAAAAAIAAAAEAAIAAAACAAIAAAAEAP7/AAACAAAAAAA=")
+tile_set = SubResource("TileSet_5txs4")
+
+[node name="InnerWalls" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAADAAAAAAAAAAYAAAACAAAAAAAAAAYAAAABAAAAAAAAAAYAAAAEAAAAAAAGAAcAAAAAAAAAAAAEAAcAAAD//wAAAAAGAAcAAAD+/wAAAAAEAAcAAAA=")
+tile_set = SubResource("TileSet_5txs4")
+
+[node name="OuterWalls" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD+/wAAAAADAAEAAAD+////AAADAAEAAAD+/wEAAAADAAEAAAD+//7/AAADAAAAAAAEAAEAAAAFAAEAAAAEAAAAAAAFAAEAAAAEAP//AAAFAAEAAAAEAP7/AAAFAAAAAAADAP7/AAAEAAAAAAACAP7/AAAEAAAAAAABAP7/AAAEAAAAAAAAAP7/AAAEAAAAAAD///7/AAAEAAAAAAAEAAIAAAAFAAIAAAD+/wIAAAADAAIAAAD//wIAAAAEAAIAAAADAAIAAAAEAAIAAAAAAAIAAAAEAAIAAAACAAIAAAAEAAIAAAA=")
+tile_set = SubResource("TileSet_5txs4")
