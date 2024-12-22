@@ -93,6 +93,11 @@ position_smoothing_speed = 10.0
 [node name="SteamVent" parent="." instance=ExtResource("9_th41a")]
 position = Vector2(1025, 160)
 
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.234697, 0.244884, 0.33148, 1)
+energy = 0.75
+blend_mode = 1
+
 [connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
 [connection signal="granade_input" from="Player" to="." method="_on_player_granade_input"]
 [connection signal="laser_input" from="Player" to="." method="_on_player_laser_input"]
