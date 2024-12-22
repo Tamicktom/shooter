@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://cct5o4g588bmb" path="res://graphics/lights/textures/circle.png" id="2_p356y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mp23u"]
-radius = 74.0
-height = 724.0
+radius = 81.0
+height = 842.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1wgvv"]
 polygon = PackedVector2Array(-212, 49, -211, 145, -370, 142, -397, 89, -340, 18, -266, -7, 300, -6, 439, 87, 406, 142, 254, 142, 254, 51)
 
-[node name="WallLight" type="Area2D"]
+[node name="WallLight" type="StaticBody2D"]
 collision_layer = 4
 collision_mask = 15
 
@@ -20,14 +20,16 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_mp23u")
 
 [node name="WallLamp" type="Sprite2D" parent="."]
-position = Vector2(523, 151)
 texture = ExtResource("1_ll0t4")
+region_enabled = true
+region_rect = Rect2(0, 0, 841.32, 179.94)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(0, 31)
-color = Color(0.0745098, 0.368627, 0.419608, 1)
+position = Vector2(0, -21)
+color = Color(0.107866, 0.450925, 0.700938, 1)
 energy = 10.0
 shadow_enabled = true
+shadow_filter = 1
 texture = ExtResource("2_p356y")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
