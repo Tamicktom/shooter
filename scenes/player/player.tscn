@@ -9,7 +9,7 @@ radius = 54.0
 height = 108.0
 
 [sub_resource type="Gradient" id="Gradient_vfanh"]
-colors = PackedColorArray(0.141176, 0.529412, 0.831373, 0.956863, 1, 1, 1, 0)
+colors = PackedColorArray(0.141176, 0.529412, 0.831373, 0.478431, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_353o6"]
 gradient = SubResource("Gradient_vfanh")
@@ -60,7 +60,7 @@ position = Vector2(132, 5)
 [node name="ShootEffect" type="GPUParticles2D" parent="."]
 position = Vector2(132, 0)
 emitting = false
-amount = 30
+amount = 50
 process_material = SubResource("ParticleProcessMaterial_co4jf")
 texture = ExtResource("3_qfe6p")
 lifetime = 0.2
