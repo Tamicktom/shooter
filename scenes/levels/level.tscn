@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://rttda28unuoi"]
+[gd_scene load_steps=13 format=4 uid="uid://rttda28unuoi"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_ldm8i"]
 [ext_resource type="Texture2D" uid="uid://du4vvxhfqovbd" path="res://graphics/ground/stones.png" id="2_8ku8u"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cul5o3irgbmyy" path="res://graphics/tilesets/outside_walls.png" id="4_kqva8"]
 [ext_resource type="Texture2D" uid="uid://bq1270vpqwu1x" path="res://graphics/tilesets/soil.png" id="5_i7teg"]
 [ext_resource type="PackedScene" uid="uid://dvgjsdbn48dah" path="res://scenes/objects/house.tscn" id="8_ir1xd"]
+[ext_resource type="PackedScene" uid="uid://du4w0ol4meiru" path="res://scenes/objects/steam_vent.tscn" id="9_th41a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rs1ee"]
 resource_name = "walls"
@@ -88,6 +89,9 @@ position = Vector2(542, 364)
 zoom = Vector2(0.6, 0.6)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+
+[node name="SteamVent" parent="." instance=ExtResource("9_th41a")]
+position = Vector2(1025, 160)
 
 [connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
 [connection signal="granade_input" from="Player" to="." method="_on_player_granade_input"]
