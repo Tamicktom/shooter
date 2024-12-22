@@ -35,6 +35,7 @@ func _process(_delta: float) -> void:
 		var laser_markers = $LaserStartPositions.get_children();
 		var selected_marker = laser_markers[randi() % laser_markers.size()];
 		can_laser = false;
+		$ShootEffect.emitting = true;
 		laser_input.emit(selected_marker.global_position, player_direction);
 		# emit the position we selected
 		$LaserReloadTimer.start();
