@@ -71,10 +71,13 @@ tile_map_data = PackedByteArray("AAD+/wMAAAAAAAAAAAADAAMAAAACAAEAAAD//wMAAAABAAA
 tile_set = SubResource("TileSet_mw1n7")
 
 [node name="House" parent="." instance=ExtResource("8_ir1xd")]
-position = Vector2(2220, -793)
+position = Vector2(2403, -781)
+rotation = 1.39885
 
 [node name="Gate" parent="." instance=ExtResource("3_hymgg")]
-position = Vector2(-39, -109)
+position = Vector2(-992, -157)
+rotation = -0.365098
+scale = Vector2(1.68264, 1.68264)
 
 [node name="Projectiles" type="Node2D" parent="."]
 
