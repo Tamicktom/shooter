@@ -29,3 +29,14 @@ func _on_player_laser_input(pos: Vector2, direction: Vector2) -> void:
 	laser.direction = direction;
 	laser.rotation = direction.angle();
 	$Projectiles.add_child(laser);
+
+
+func _on_house_player_entered() -> void:
+	var tween = get_tree().create_tween();
+	tween.tween_property($Player/Camera2D, "zoom", Vector2(0.7,0.7), 1);
+
+
+
+func _on_house_player_exited() -> void:
+	var tween = get_tree().create_tween();
+	tween.tween_property($Player/Camera2D, "zoom", Vector2(0.6,0.6), 1);
