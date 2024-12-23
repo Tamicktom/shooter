@@ -1,12 +1,17 @@
 extends RigidBody2D;
 
 @export_range(1, 2000, 1) var SPEED: int = 1000;
-@export_range(1, 10, 1) var ALIVE_TIME: int = 3; # Seconds
 
 var direction: Vector2 = Vector2.UP;
 
-func _process(_delta: float) -> void:
-  $Timer.wait_time = ALIVE_TIME; # Reset the timer
+func _ready() -> void:
+  $Explosion.hide();
+  pass
 
-func _on_timer_timeout() -> void:
-  queue_free();
+func _process(_delta: float) -> void:
+  pass
+
+func explode() -> void:
+  $AnimationPlayer.play("Explosion");
+  $Explosion.show();
+  $CollisionShape2D.disabled = true;
