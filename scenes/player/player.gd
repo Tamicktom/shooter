@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
-const SPEED: int = 350;
-const RUN_SPEED: int = 700;
+
+@export var max_speed: int = 700;
+var speed: float = float(max_speed) / 2;
+var run_speed: int = max_speed;
 
 signal laser_input(pos: Vector2, direction: Vector2);
 signal granade_input(pos: Vector2, direction: Vector2);
@@ -52,11 +54,11 @@ func _process(_delta: float) -> void:
 func movement() -> void:
 	var is_running = Input.is_action_pressed("run");
 	var direction = Input.get_vector("left", "right", "up", "down");
-	# velocity = direction * SPEED;
+	# velocity = direction * speed;
 	if is_running:
-		velocity = direction * RUN_SPEED;
+		velocity = direction * run_speed;
 	else:
-		velocity = direction * SPEED;
+		velocity = direction * speed;
 	move_and_slide();
 
 func _on_laser_reload_timer_timeout() -> void:
