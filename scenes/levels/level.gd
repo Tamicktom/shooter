@@ -30,13 +30,14 @@ func _on_player_laser_input(pos: Vector2, direction: Vector2) -> void:
 	laser.rotation = direction.angle();
 	$Projectiles.add_child(laser);
 
-
 func _on_house_player_entered() -> void:
 	var tween = get_tree().create_tween();
-	tween.tween_property($Player/Camera2D, "zoom", Vector2(0.7,0.7), 1);
-
-
+	tween.set_parallel(true);
+	tween.tween_property($Player/Camera2D, "zoom", Vector2(0.7,0.7), 1).set_trans(Tween.TRANS_QUAD);
+	tween.tween_property($Player, "modulate:a", 0, 2).from(0.5);
 
 func _on_house_player_exited() -> void:
 	var tween = get_tree().create_tween();
+	tween.set_parallel(true);
 	tween.tween_property($Player/Camera2D, "zoom", Vector2(0.6,0.6), 1);
+	tween.tween_property($Player, "modulate:a", 1, 2);
