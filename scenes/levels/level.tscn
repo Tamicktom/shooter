@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=4 uid="uid://rttda28unuoi"]
+[gd_scene load_steps=13 format=4 uid="uid://rttda28unuoi"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_ldm8i"]
 [ext_resource type="Texture2D" uid="uid://du4vvxhfqovbd" path="res://graphics/ground/stones.png" id="2_8ku8u"]
 [ext_resource type="PackedScene" uid="uid://d1mmobbnafto0" path="res://scenes/player/player.tscn" id="3_7strp"]
-[ext_resource type="PackedScene" uid="uid://chcqbjr0sescy" path="res://scenes/objects/gate.tscn" id="3_hymgg"]
 [ext_resource type="Texture2D" uid="uid://bueg2c3tynk0h" path="res://graphics/decals/dirt_patch.png" id="3_wiip4"]
 [ext_resource type="Texture2D" uid="uid://cul5o3irgbmyy" path="res://graphics/tilesets/outside_walls.png" id="4_kqva8"]
 [ext_resource type="Texture2D" uid="uid://bq1270vpqwu1x" path="res://graphics/tilesets/soil.png" id="5_i7teg"]
@@ -79,11 +78,6 @@ position = Vector2(1025, 160)
 position = Vector2(2403, -781)
 rotation = 1.39885
 
-[node name="Gate" parent="." instance=ExtResource("3_hymgg")]
-position = Vector2(-992, -157)
-rotation = -0.365098
-scale = Vector2(1.68264, 1.68264)
-
 [node name="Projectiles" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("3_7strp")]
@@ -104,6 +98,5 @@ position = Vector2(-175, 735)
 
 [connection signal="player_entered" from="House" to="." method="_on_house_player_entered"]
 [connection signal="player_exited" from="House" to="." method="_on_house_player_exited"]
-[connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
 [connection signal="granade_input" from="Player" to="." method="_on_player_granade_input"]
 [connection signal="laser_input" from="Player" to="." method="_on_player_laser_input"]

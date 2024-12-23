@@ -1,5 +1,7 @@
 extends Node2D;
 
+class_name LevelParent;
+
 var laser_scene: PackedScene = preload("res://scenes/laser.tscn");
 var granade_scene: PackedScene = preload("res://scenes/granade.tscn");
 
@@ -10,12 +12,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass ;
-
-func _on_gate_player_entered_gate(_body: Node2D) -> void:
-	var tween = create_tween();
-	tween.tween_property($Player, "max_speed", 0, 1);
-	print("player entrou no portao");
-	pass ; # Replace with function body.
 
 func _on_player_granade_input(pos: Vector2, direction: Vector2) -> void:
 	var granade: RigidBody2D = granade_scene.instantiate();
