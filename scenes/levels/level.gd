@@ -11,7 +11,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass;
 
-func _on_gate_player_entered_gate(_body: Node2D) -> void:
+func _on_gate_player_entered_gate(body: Node2D) -> void:
+	print(body);
 	pass; # Replace with function body.
 
 func _on_player_granade_input(pos: Vector2, direction: Vector2) -> void:
