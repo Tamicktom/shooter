@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://rttda28unuoi"]
+[gd_scene load_steps=12 format=4 uid="uid://rttda28unuoi"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_ldm8i"]
 [ext_resource type="Texture2D" uid="uid://du4vvxhfqovbd" path="res://graphics/ground/stones.png" id="2_8ku8u"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bueg2c3tynk0h" path="res://graphics/decals/dirt_patch.png" id="3_wiip4"]
 [ext_resource type="Texture2D" uid="uid://cul5o3irgbmyy" path="res://graphics/tilesets/outside_walls.png" id="4_kqva8"]
 [ext_resource type="Texture2D" uid="uid://bq1270vpqwu1x" path="res://graphics/tilesets/soil.png" id="5_i7teg"]
-[ext_resource type="PackedScene" uid="uid://dvgjsdbn48dah" path="res://scenes/objects/house.tscn" id="8_ir1xd"]
 [ext_resource type="PackedScene" uid="uid://du4w0ol4meiru" path="res://scenes/objects/steam_vent.tscn" id="9_th41a"]
 [ext_resource type="PackedScene" uid="uid://cvefc8y0to2fo" path="res://scenes/enemies/drone.tscn" id="10_7qxxn"]
 
@@ -74,10 +73,6 @@ tile_set = SubResource("TileSet_mw1n7")
 [node name="SteamVent" parent="." instance=ExtResource("9_th41a")]
 position = Vector2(1025, 160)
 
-[node name="House" parent="." instance=ExtResource("8_ir1xd")]
-position = Vector2(2403, -781)
-rotation = 1.39885
-
 [node name="Projectiles" type="Node2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("3_7strp")]
@@ -96,7 +91,5 @@ blend_mode = 1
 [node name="Drone" parent="." instance=ExtResource("10_7qxxn")]
 position = Vector2(-175, 735)
 
-[connection signal="player_entered" from="House" to="." method="_on_house_player_entered"]
-[connection signal="player_exited" from="House" to="." method="_on_house_player_exited"]
 [connection signal="granade_input" from="Player" to="." method="_on_player_granade_input"]
 [connection signal="laser_input" from="Player" to="." method="_on_player_laser_input"]
