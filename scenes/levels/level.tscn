@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://rttda28unuoi"]
+[gd_scene load_steps=4 format=3 uid="uid://rttda28unuoi"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_ldm8i"]
 [ext_resource type="PackedScene" uid="uid://d1mmobbnafto0" path="res://scenes/player/player.tscn" id="3_7strp"]
+[ext_resource type="PackedScene" uid="uid://jaua28cibh81" path="res://scenes/user_interface/ui.tscn" id="3_a487u"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ldm8i")
@@ -22,6 +23,8 @@ position_smoothing_speed = 10.0
 color = Color(0.234697, 0.244884, 0.33148, 1)
 energy = 0.75
 blend_mode = 1
+
+[node name="UI" parent="." instance=ExtResource("3_a487u")]
 
 [connection signal="granade_input" from="Player" to="." method="_on_player_granade_input"]
 [connection signal="laser_input" from="Player" to="." method="_on_player_laser_input"]
