@@ -1,77 +1,12 @@
-[gd_scene load_steps=12 format=4 uid="uid://rttda28unuoi"]
+[gd_scene load_steps=3 format=3 uid="uid://rttda28unuoi"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_ldm8i"]
-[ext_resource type="Texture2D" uid="uid://du4vvxhfqovbd" path="res://graphics/ground/stones.png" id="2_8ku8u"]
 [ext_resource type="PackedScene" uid="uid://d1mmobbnafto0" path="res://scenes/player/player.tscn" id="3_7strp"]
-[ext_resource type="Texture2D" uid="uid://bueg2c3tynk0h" path="res://graphics/decals/dirt_patch.png" id="3_wiip4"]
-[ext_resource type="Texture2D" uid="uid://cul5o3irgbmyy" path="res://graphics/tilesets/outside_walls.png" id="4_kqva8"]
-[ext_resource type="Texture2D" uid="uid://bq1270vpqwu1x" path="res://graphics/tilesets/soil.png" id="5_i7teg"]
-[ext_resource type="PackedScene" uid="uid://du4w0ol4meiru" path="res://scenes/objects/steam_vent.tscn" id="9_th41a"]
-[ext_resource type="PackedScene" uid="uid://cvefc8y0to2fo" path="res://scenes/enemies/drone.tscn" id="10_7qxxn"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rs1ee"]
-resource_name = "walls"
-texture = ExtResource("4_kqva8")
-texture_region_size = Vector2i(390, 390)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-0:3/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qlx2i"]
-resource_name = "soil"
-texture = ExtResource("5_i7teg")
-texture_region_size = Vector2i(390, 390)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_mw1n7"]
-tile_size = Vector2i(390, 390)
-sources/0 = SubResource("TileSetAtlasSource_rs1ee")
-sources/1 = SubResource("TileSetAtlasSource_qlx2i")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ldm8i")
 
 [node name="Ground" type="Node2D" parent="."]
-
-[node name="Soil" type="Sprite2D" parent="Ground"]
-texture_repeat = 2
-position = Vector2(543, 566)
-texture = ExtResource("2_8ku8u")
-region_enabled = true
-region_rect = Rect2(-2573.04, -2085.57, 7686.4, 5523.25)
-
-[node name="Decoration" type="Sprite2D" parent="Ground"]
-modulate = Color(0.952941, 0.752941, 0.588235, 1)
-position = Vector2(593, 664)
-texture = ExtResource("3_wiip4")
-
-[node name="Soil2" type="TileMapLayer" parent="Ground"]
-use_parent_material = true
-tile_map_data = PackedByteArray("AAD+/wMAAAAAAAAAAAADAAMAAAACAAEAAAD//wMAAQAAAAAAAAACAAMAAAABAAAAAAADAAQAAAAAAAIAAAADAAUAAAAAAAMAAAAAAAMAAQABAAAAAAABAAMAAQACAAAAAAD//wQAAQAAAAIAAAABAAQAAQACAAIAAAAAAAQAAQABAAIAAAA=")
-tile_set = SubResource("TileSet_mw1n7")
-
-[node name="Walls" type="TileMapLayer" parent="Ground"]
-use_parent_material = true
-tile_map_data = PackedByteArray("AAD+/wMAAAAAAAAAAAADAAMAAAACAAEAAAD//wMAAAABAAAAAAACAAMAAAABAAAAAAADAAQAAAAAAAIAAAADAAUAAAAAAAMAAAAAAAMAAAABAAAAAAABAAMAAAABAAAAAAA=")
-tile_set = SubResource("TileSet_mw1n7")
-
-[node name="SteamVent" parent="." instance=ExtResource("9_th41a")]
-position = Vector2(1025, 160)
 
 [node name="Projectiles" type="Node2D" parent="."]
 
@@ -87,9 +22,6 @@ position_smoothing_speed = 10.0
 color = Color(0.234697, 0.244884, 0.33148, 1)
 energy = 0.75
 blend_mode = 1
-
-[node name="Drone" parent="." instance=ExtResource("10_7qxxn")]
-position = Vector2(-175, 735)
 
 [connection signal="granade_input" from="Player" to="." method="_on_player_granade_input"]
 [connection signal="laser_input" from="Player" to="." method="_on_player_laser_input"]

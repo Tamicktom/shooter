@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfkylytikumqj"]
+[gd_scene load_steps=3 format=4 uid="uid://dfkylytikumqj"]
 
 [ext_resource type="PackedScene" uid="uid://rttda28unuoi" path="res://scenes/levels/level.tscn" id="1_7pgca"]
+[ext_resource type="TileSet" uid="uid://4f1gbjw56iva" path="res://scenes/tilesets/house.tres" id="2_ecud0"]
 
 [node name="Level" instance=ExtResource("1_7pgca")]
 
-[node name="House" parent="." index="2"]
-position = Vector2(2836, -1198)
+[node name="Floor" type="TileMapLayer" parent="Ground" index="0"]
+tile_map_data = PackedByteArray("AAABAAEAAAABAAEAAAAAAAEAAAABAAEAAAAAAAAAAAABAAEAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAACAAEAAAABAAEAAAD//wEAAAABAAEAAAD//wAAAAABAAEAAAD/////AAABAAEAAAAAAP//AAABAAEAAAABAP//AAABAAEAAAACAP//AAABAAEAAAADAP//AAABAAEAAAADAAAAAAABAAEAAAADAAEAAAABAAEAAAADAAIAAAABAAEAAAACAAIAAAABAAEAAAABAAIAAAABAAEAAAAAAAIAAAABAAEAAAD//wIAAAABAAEAAAA=")
+tile_set = ExtResource("2_ecud0")
+
+[node name="Walls" type="TileMapLayer" parent="Ground" index="1"]
+tile_set = ExtResource("2_ecud0")
+
+[node name="Objects" type="TileMapLayer" parent="Ground" index="2"]
+tile_set = ExtResource("2_ecud0")
