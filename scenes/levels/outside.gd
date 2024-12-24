@@ -1,17 +1,14 @@
 extends LevelParent;
 
+# var inside_level_packed:PackedScene = preload("res://scenes/levels/inside.tscn");
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _on_door_body_entered(_body: Node2D) -> void:
+	print("Player entrou no portão.");
+	# This is bug, we need to use call_deferred to change scene.
+	# get_tree().change_scene_to_packed(inside_level_packed);
+	# call_deferred("change_scene");
+	change_scene();
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
-
-func _on_gate_player_entered_gate(_body: Node2D) -> void:
-	var tween = create_tween();
-	tween.tween_property($Player, "max_speed", 0, 1);
-	print("player entrou no portao");
+func change_scene() -> void:
+	get_tree().change_scene_to_file.bind("res://scenes/levels/inside.tscn").call_deferred();

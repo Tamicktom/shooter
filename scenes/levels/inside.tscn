@@ -29,7 +29,7 @@ tile_set = ExtResource("2_ecud0")
 tile_set = ExtResource("2_ecud0")
 
 [node name="Player" parent="." index="2"]
-position = Vector2(411, 291)
+position = Vector2(931, 204)
 
 [node name="ExitGate" type="Area2D" parent="." index="4"]
 collision_layer = 16
