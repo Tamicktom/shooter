@@ -13,23 +13,17 @@ func _ready() -> void:
 	update_laser_text();
 	update_granade_text();
 
-func update_laser_text():
-	var amount: int = Globals.laser_amount;
-	laser_label.text = str(amount);
-	if amount <= 0:
-		update_color(laser_label, laser_icon, red);
-	else:
-		update_color(laser_label, laser_icon, green);
-	
+func update_laser_text() -> void:
+	update_color(laser_label, laser_icon, Globals.laser_amount);
 
-func update_granade_text():
-	var amount: int = Globals.granade_amount;
-	granade_label.text = str(amount);
-	if amount <= 0:
-		update_color(granade_label, granade_icon, red);
-	else:
-		update_color(granade_label, granade_icon, green);
+func update_granade_text() -> void:
+	update_color(granade_label, granade_icon, Globals.granade_amount);
 
-func update_color(label: Label, icon: TextureRect, color: Color) -> void:
-	label.modulate = color;
-	icon.modulate = color;
+func update_color(label: Label, icon: TextureRect, amount: int) -> void:
+	label.text = str(amount);
+	if amount <= 0:
+		label.modulate = red;
+		icon.modulate = red;
+	else:
+		label.modulate = green;
+		icon.modulate = green;
