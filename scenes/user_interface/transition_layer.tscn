@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bj4x8m4sl020v"]
+[gd_scene load_steps=5 format=3 uid="uid://bj4x8m4sl020v"]
 
 [ext_resource type="Script" path="res://scenes/user_interface/transition_layer.gd" id="1_8m3br"]
 
@@ -32,26 +32,10 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_jt7xl"]
-resource_name = "fade_to_transparent"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TransitionColor:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.999),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_je31y"]
 _data = {
 "RESET": SubResource("Animation_udnla"),
-"fade_to_black": SubResource("Animation_8r3m2"),
-"fade_to_transparent": SubResource("Animation_jt7xl")
+"fade_to_black": SubResource("Animation_8r3m2")
 }
 
 [node name="TransitionLayer" type="CanvasLayer"]
