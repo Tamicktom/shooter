@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 func _ready() -> void:
-	$AnimationPlayer.play("fade_to_transparent");
+	$TransitionColor.color = Color(0,0,0,0);
 
 func change_scene(target: String) -> void:
 	$AnimationPlayer.play("fade_to_black");
