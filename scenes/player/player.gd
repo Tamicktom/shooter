@@ -20,6 +20,7 @@ var weapons_delays: Dictionary = {
 func _ready() -> void:
 	$LaserReloadTimer.wait_time = weapons_delays["laser"];
 	$GranadeReloadTimer.wait_time = weapons_delays["granade"];
+	print(Globals.laser_amount);
 	pass # Replace with function body.
 
 
