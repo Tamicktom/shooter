@@ -27,13 +27,14 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	movement();
-
+	
 	# Rotate the player to face the mouse position
 	look_at(get_global_mouse_position());
 	
 	# Laser shooting input
 	var player_direction = (get_global_mouse_position() - position).normalized();
-	if Input.is_action_pressed("primaty-action") and can_laser:
+	if Input.is_action_pressed("primaty-action") and can_laser and Globals.laser_amount > 0:
+		Globals.laser_amount -= 1;
 		# randomly select a marker 2D for the laser start
 		var laser_markers = $LaserStartPositions.get_children();
 		var selected_marker = laser_markers[randi() % laser_markers.size()];
@@ -44,7 +45,8 @@ func _process(_delta: float) -> void:
 		$LaserReloadTimer.start();
 
 	# Granade shooting input	
-	if Input.is_action_pressed("secondary-action") and can_granade:
+	if Input.is_action_pressed("secondary-action") and can_granade and Globals.granade_amount > 0:
+		Globals.granade_amount -= 1;
 		var granade_markers = $LaserStartPositions.get_children();
 		var selected_marker = granade_markers[0];
 		can_granade = false;

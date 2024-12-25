@@ -18,6 +18,7 @@ func _on_player_granade_input(pos: Vector2, direction: Vector2) -> void:
 	granade.position = pos;
 	granade.linear_velocity = direction * granade.SPEED;
 	$Projectiles.add_child(granade);
+	$UI.update_granade_text();
 
 func _on_player_laser_input(pos: Vector2, direction: Vector2) -> void:
 	# Spawn the laser
@@ -27,6 +28,7 @@ func _on_player_laser_input(pos: Vector2, direction: Vector2) -> void:
 	laser.direction = direction;
 	laser.rotation = direction.angle();
 	$Projectiles.add_child(laser);
+	$UI.update_laser_text();
 
 func _on_house_player_entered() -> void:
 	var tween = get_tree().create_tween();
