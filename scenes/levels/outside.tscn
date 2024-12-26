@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://heuu5h3roeev"]
+[gd_scene load_steps=6 format=4 uid="uid://heuu5h3roeev"]
 
 [ext_resource type="PackedScene" uid="uid://rttda28unuoi" path="res://scenes/levels/level.tscn" id="1_s8e7g"]
 [ext_resource type="Script" path="res://scenes/levels/outside.gd" id="2_31yh6"]
 [ext_resource type="TileSet" uid="uid://4f1gbjw56iva" path="res://scenes/tilesets/house.tres" id="3_swu28"]
+[ext_resource type="PackedScene" uid="uid://46g0olnen6rq" path="res://scenes/objects/item.tscn" id="4_ok2mo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iocp7"]
 size = Vector2(194, 736)
@@ -20,5 +21,21 @@ collision_layer = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door" index="0"]
 position = Vector2(151, 359)
 shape = SubResource("RectangleShape2D_iocp7")
+
+[node name="Items" type="Node2D" parent="." index="5"]
+
+[node name="Item3" parent="Items" index="0" instance=ExtResource("4_ok2mo")]
+position = Vector2(1058, 581)
+rotation = -2.09439
+type = 2
+
+[node name="Item2" parent="Items" index="1" instance=ExtResource("4_ok2mo")]
+position = Vector2(1064, 317)
+rotation = -1.0472
+type = 1
+
+[node name="Item" parent="Items" index="2" instance=ExtResource("4_ok2mo")]
+position = Vector2(1065, 97.0001)
+rotation = -0.523598
 
 [connection signal="body_entered" from="Door" to="." method="_on_door_body_entered"]
