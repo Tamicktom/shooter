@@ -27,3 +27,7 @@ func update_color(label: Label, icon: TextureRect, amount: int) -> void:
 	else:
 		label.modulate = green;
 		icon.modulate = green;
+
+func refresh_stats() -> void:
+	update_laser_text();
+	update_granade_text();

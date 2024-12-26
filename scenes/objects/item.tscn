@@ -23,3 +23,5 @@ energy = 0.5
 shadow_enabled = true
 texture = ExtResource("2_j5n28")
 texture_scale = 0.5
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

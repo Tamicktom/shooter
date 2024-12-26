@@ -1,5 +1,5 @@
-extends CharacterBody2D
-
+extends CharacterBody2D;
+class_name Player;
 
 @export var max_speed: int = 700;
 var speed: float = float(max_speed) / 2;
@@ -7,6 +7,7 @@ var run_speed: int = max_speed;
 
 signal laser_input(pos: Vector2, direction: Vector2);
 signal granade_input(pos: Vector2, direction: Vector2);
+signal update_stats();
 
 var can_laser: bool = true;
 var can_granade: bool = true;
@@ -72,3 +73,12 @@ func _on_laser_reload_timer_timeout() -> void:
 func _on_granade_reload_timer_timeout() -> void:
 	can_granade = true;
 	pass # Replace with function body.
+
+func add_item(type: ItemTypes.Type, amount: int) -> void:
+	if type == ItemTypes.Type.LASER:
+		Globals.laser_amount += amount;
+	elif type == ItemTypes.Type.GRANADE:
+		Globals.granade_amount += amount;
+	elif type == ItemTypes.Type.HEALTH:
+		Globals.health_amount += amount;
+	update_stats.emit();
