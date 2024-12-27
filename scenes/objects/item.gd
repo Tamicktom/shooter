@@ -2,6 +2,9 @@ extends Area2D
 
 @export var type: ItemTypes.Type;
 
+var direction: Vector2;
+var distance: int = randi_range(100, 200);
+
 const rotation_speed: int = 3;
 
 var colors_dictionary: Dictionary = {
@@ -28,6 +31,11 @@ var colors_dictionary: Dictionary = {
 func _ready() -> void:
 	update_color_by_type(type);
 
+	#tween
+	var target_position: Vector2 = position + direction * distance;
+	var movement_tween: Tween = create_tween();
+	movement_tween.tween_property(self, "position", target_position, 0.3);
+
 func _process(delta: float) -> void:
 	rotation += rotation_speed * delta;
 
@@ -40,3 +48,8 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		colors_dictionary[type]["func"].call();
 	queue_free();
+
+func randomize_type() -> void:
+	var random_index: int = randi_range(0, ItemTypes.Type.values().size() - 1);
+	type = ItemTypes.Type.values()[random_index];
+	update_color_by_type(type);

@@ -1,14 +1,6 @@
 extends ItemContainer
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func hit():
-	print("Box has been hit");
+	$LidSprite.hide();
+	var pos: Vector2 = get_random_spawn_position();
+	open.emit(pos, current_direction);
