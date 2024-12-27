@@ -33,8 +33,9 @@ func _ready() -> void:
 
 	#tween
 	var target_position: Vector2 = position + direction * distance;
-	var movement_tween: Tween = create_tween();
-	movement_tween.tween_property(self, "position", target_position, 0.3);
+	var tween: Tween = create_tween().set_parallel(true);
+	tween.tween_property(self, "position", target_position, 0.3);
+	tween.tween_property(self, "scale", Vector2(0.75, 0.75), 0.2);
 
 func _process(delta: float) -> void:
 	rotation += rotation_speed * delta;
