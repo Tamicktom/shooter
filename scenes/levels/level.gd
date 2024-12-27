@@ -12,7 +12,6 @@ func _ready() -> void:
 		container.connect("open", _on_container_opened);
 
 func _on_container_opened(pos: Vector2, direction: Vector2):
-	print(pos, direction);
 	var item = item_scene.instantiate();
 	item.position = pos;
 	item.direction = direction;

@@ -7,7 +7,6 @@ class_name ItemContainer;
 signal open(position: Vector2, direction: Vector2);
 
 func hit():
-	print("Object has been hit");
 	open.emit(position, current_direction);
 
 ## Returns a random spawn position from the container's available spawn points.
