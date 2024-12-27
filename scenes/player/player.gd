@@ -61,6 +61,7 @@ func movement() -> void:
 	else:
 		velocity = direction * speed;
 	move_and_slide();
+	Globals.player_pos = global_position;
 
 func _on_laser_reload_timer_timeout() -> void:
 	can_laser = true;

@@ -28,5 +28,7 @@ blend_mode = 1
 
 [node name="UI" parent="." instance=ExtResource("3_a487u")]
 
+[node name="Enemies" type="Node2D" parent="."]
+
 [connection signal="granade_input" from="Player" to="." method="_on_player_granade_input"]
 [connection signal="laser_input" from="Player" to="." method="_on_player_laser_input"]

@@ -16,3 +16,5 @@ var health_amount: int = 200:
 	set(value):
 		health_amount = value;
 		stat_change.emit();
+
+var player_pos: Vector2
