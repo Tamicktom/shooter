@@ -10,6 +10,8 @@ var item_scene: PackedScene = preload("res://scenes/objects/item.tscn");
 func _ready() -> void:
 	for container in get_tree().get_nodes_in_group("Container"):
 		container.connect("open", _on_container_opened);
+	for scout in get_tree().get_nodes_in_group("Scouts"):
+		scout.connect("laser", _on_scout_laser);
 
 func _on_container_opened(pos: Vector2, direction: Vector2):
 	var item = item_scene.instantiate();
@@ -29,6 +31,14 @@ func _on_player_granade_input(pos: Vector2, direction: Vector2) -> void:
 	granade.linear_velocity = direction * granade.SPEED;
 	$Projectiles.add_child(granade);
 	$UI.update_granade_text();
+
+func _on_scout_laser(pos: Vector2, direction: Vector2) -> void:
+	var laser: Area2D = laser_scene.instantiate();
+	laser.position = pos;
+	laser.direction = direction;
+	laser.rotation = direction.angle();
+	laser.modulate = Color(1, 0, 0); # Red color
+	$Projectiles.add_child(laser);
 
 func _on_player_laser_input(pos: Vector2, direction: Vector2) -> void:
 	# Spawn the laser
