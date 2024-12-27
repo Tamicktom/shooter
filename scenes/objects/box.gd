@@ -7,9 +7,9 @@ func hit():
 		# "open" the box
 		$LidSprite.hide();
 
-		var pos: Vector2 = get_random_spawn_position();
+		var pos: Array[Vector2] = get_all_spawn_positions();
 
-		for i in range(5):
-			open.emit(pos, current_direction);
+		for i in range(pos.size()):
+			open.emit(pos[i], current_direction);
 
 		opened = true;
