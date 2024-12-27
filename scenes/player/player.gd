@@ -69,11 +69,3 @@ func _on_laser_reload_timer_timeout() -> void:
 
 func _on_granade_reload_timer_timeout() -> void:
 	can_granade = true;
-
-func add_item(type: ItemTypes.Type, amount: int) -> void:
-	if type == ItemTypes.Type.LASER:
-		Globals.laser_amount += amount;
-	elif type == ItemTypes.Type.GRANADE:
-		Globals.granade_amount += amount;
-	elif type == ItemTypes.Type.HEALTH:
-		Globals.health_amount += amount;

@@ -8,17 +8,20 @@ var colors_dictionary: Dictionary = {
 	ItemTypes.Type.LASER: {
 		"color": Color(1, 0, 0),
 		"light_color": Color(1, 0, 0),
-		"add_amount": 10,
+		"func": func():
+			Globals.laser_amount += 10,
 	},
 	ItemTypes.Type.GRANADE: {
 		"color": Color(0, 1, 0),
 		"light_color": Color(0, 1, 0),
-		"add_amount": 10,
+		"func": func():
+			Globals.granade_amount += 10,
 	},
 	ItemTypes.Type.HEALTH: {
 		"color": Color(0, 0, 1),
 		"light_color": Color(0, 0, 1),
-		"add_amount": 200
+		"func": func():
+			Globals.health_amount += 200,
 	}
 };
 
@@ -35,5 +38,5 @@ func update_color_by_type(sub_type: ItemTypes.Type) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	# verify if the body is the player
 	if body is Player:
-		body.add_item(type, colors_dictionary[type]["add_amount"]);
+		colors_dictionary[type]["func"].call();
 	queue_free();

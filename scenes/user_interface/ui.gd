@@ -11,12 +11,9 @@ var red: Color = Color(0.9, 0, 0, 1);
 @onready var health_bar: TextureProgressBar = $HealthBar/TextureProgressBar;
 
 func _ready() -> void:
-	Globals.connect("health_changed", Callable(self, "refresh_stats"));
-	Globals.connect("laser_changed", Callable(self, "refresh_stats"));
-	Globals.connect("granade_changed", Callable(self, "refresh_stats"));
-	update_laser_text();
-	update_granade_text();
-	update_health_bar();
+	Globals.connect("stat_change", Callable(self, "refresh_stats"));
+	refresh_stats();
+
 func update_laser_text() -> void:
 	update_color(laser_label, laser_icon, Globals.laser_amount);
 
