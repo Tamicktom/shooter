@@ -41,6 +41,3 @@ func _on_house_player_exited() -> void:
 	tween.set_parallel(true);
 	tween.tween_property($Player/Camera2D, "zoom", Vector2(0.6, 0.6), 1);
 	tween.tween_property($Player, "modulate:a", 1, 2);
-
-func _on_player_update_stats() -> void:
-	$UI.refresh_stats();

@@ -7,7 +7,6 @@ var run_speed: int = max_speed;
 
 signal laser_input(pos: Vector2, direction: Vector2);
 signal granade_input(pos: Vector2, direction: Vector2);
-signal update_stats();
 
 var can_laser: bool = true;
 var can_granade: bool = true;
@@ -22,7 +21,6 @@ func _ready() -> void:
 	$LaserReloadTimer.wait_time = weapons_delays["laser"];
 	$GranadeReloadTimer.wait_time = weapons_delays["granade"];
 	print(Globals.laser_amount);
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -67,12 +65,10 @@ func movement() -> void:
 
 func _on_laser_reload_timer_timeout() -> void:
 	can_laser = true;
-	pass # Replace with function body.
 
 
 func _on_granade_reload_timer_timeout() -> void:
 	can_granade = true;
-	pass # Replace with function body.
 
 func add_item(type: ItemTypes.Type, amount: int) -> void:
 	if type == ItemTypes.Type.LASER:
@@ -81,4 +77,3 @@ func add_item(type: ItemTypes.Type, amount: int) -> void:
 		Globals.granade_amount += amount;
 	elif type == ItemTypes.Type.HEALTH:
 		Globals.health_amount += amount;
-	update_stats.emit();

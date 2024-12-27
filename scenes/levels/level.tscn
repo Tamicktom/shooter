@@ -28,4 +28,3 @@ blend_mode = 1
 
 [connection signal="granade_input" from="Player" to="." method="_on_player_granade_input"]
 [connection signal="laser_input" from="Player" to="." method="_on_player_laser_input"]
-[connection signal="update_stats" from="Player" to="." method="_on_player_update_stats"]

@@ -32,7 +32,6 @@ func update_color_by_type(sub_type: ItemTypes.Type) -> void:
 	$Sprite2D.modulate = colors_dictionary[sub_type]["color"];
 	$PointLight2D.color = colors_dictionary[sub_type]["light_color"];
 
-
 func _on_body_entered(body: Node2D) -> void:
 	# verify if the body is the player
 	if body is Player:
