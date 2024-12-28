@@ -21,7 +21,6 @@ func _ready() -> void:
 	$LaserReloadTimer.wait_time = weapons_delays["laser"];
 	$GranadeReloadTimer.wait_time = weapons_delays["granade"];
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	movement();
@@ -65,6 +64,15 @@ func movement() -> void:
 func _on_laser_reload_timer_timeout() -> void:
 	can_laser = true;
 
-
 func _on_granade_reload_timer_timeout() -> void:
 	can_granade = true;
+
+func hit(damage: int) -> void:
+	print("Player hit by ", damage);
+	Globals.health_amount -= damage;
+	if Globals.health_amount <= 0:
+		die();
+
+func die() -> void:
+	print("Player died");
+	pass;

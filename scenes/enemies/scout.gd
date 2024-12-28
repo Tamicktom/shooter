@@ -1,10 +1,13 @@
 extends CharacterBody2D
 
+class_name Scout;
+
 signal laser(pos: Vector2, direction: Vector2);
 
 var player_nearby: bool = false;
 var can_laser: bool = true;
 var gun_toggle: bool = false;
+var health: int = 100;
 
 func _process(_delta):
 	if player_nearby:
@@ -28,6 +31,15 @@ func _on_attack_area_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_nearby = false;
 
-
 func _on_laser_cooldown_timeout() -> void:
 	can_laser = true;
+
+func hit(damage: int) -> void:
+	print("Scout hit by ", damage);
+	health -= damage;
+	if health <= 0:
+		die();
+
+func die() -> void:
+	print("Scout died");
+	queue_free();

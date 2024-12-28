@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwugk12xgldbf"]
+[gd_scene load_steps=12 format=3 uid="uid://dwugk12xgldbf"]
 
 [ext_resource type="Texture2D" uid="uid://cwwjf15785of" path="res://graphics/projectiles/grenade.png" id="1_7kt00"]
 [ext_resource type="Script" path="res://scenes/granade.gd" id="1_8ilee"]
@@ -11,6 +11,49 @@ bounce = 0.4
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2fjo5"]
 radius = 74.0608
+
+[sub_resource type="Animation" id="Animation_0mfgw"]
+resource_name = "Explosion"
+length = 2.0
+step = 0.0333
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.998),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"explode"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0999, 0.7992, 0.9324, 1.0656, 1.1988, 1.332, 1.4652, 1.5318, 1.5984, 1.665, 1.7316, 1.7982, 1.8648, 1.9314, 1.998),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 2.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:texture_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0999, 0.7992, 0.9324, 1.0656, 1.1988, 1.332, 1.4652, 1.5318, 1.5984, 1.665, 1.7316, 1.7982, 1.8648, 1.9314, 1.998),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 5.0, 0.01, 2.0, 1.0, 5.0, 0.01, 2.0, 1.0, 5.0, 0.01, 2.0, 1.0, 5.0, 0.01, 2.0]
+}
 
 [sub_resource type="Animation" id="Animation_ii71d"]
 resource_name = "Explosion"
@@ -154,49 +197,6 @@ tracks/4/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_0mfgw"]
-resource_name = "Explosion"
-length = 2.0
-step = 0.0333
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1.998),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"explode"
-}]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PointLight2D:energy")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0999, 0.7992, 0.9324, 1.0656, 1.1988, 1.332, 1.4652, 1.5318, 1.5984, 1.665, 1.7316, 1.7982, 1.8648, 1.9314, 1.998),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 2.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PointLight2D:texture_scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0999, 0.7992, 0.9324, 1.0656, 1.1988, 1.332, 1.4652, 1.5318, 1.5984, 1.665, 1.7316, 1.7982, 1.8648, 1.9314, 1.998),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [1.0, 5.0, 0.01, 2.0, 1.0, 5.0, 0.01, 2.0, 1.0, 5.0, 0.01, 2.0, 1.0, 5.0, 0.01, 2.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xyyex"]
 _data = {
 "Blinking": SubResource("Animation_0mfgw"),
@@ -204,7 +204,10 @@ _data = {
 "RESET": SubResource("Animation_p6h0p")
 }
 
-[node name="Granade" type="RigidBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_l7xt5"]
+radius = 203.062
+
+[node name="Granade" type="RigidBody2D" groups=["Entity"]]
 collision_layer = 8
 collision_mask = 15
 physics_material_override = SubResource("PhysicsMaterial_382wm")
@@ -237,3 +240,9 @@ color = Color(1, 0, 0, 1)
 energy = 0.0
 shadow_enabled = true
 texture = ExtResource("4_unanu")
+
+[node name="ExplosionArea" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
+shape = SubResource("CircleShape2D_l7xt5")

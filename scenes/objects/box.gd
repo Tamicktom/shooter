@@ -2,7 +2,7 @@ extends ItemContainer;
 
 var opened: bool = false;
 
-func hit():
+func hit(_damage:int):
 	if not opened:
 		# "open" the box
 		$LidSprite.hide();
