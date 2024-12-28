@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=4 uid="uid://heuu5h3roeev"]
+
+[ext_resource type="PackedScene" uid="uid://rttda28unuoi" path="res://scenes/levels/level.tscn" id="1_s8e7g"]
+[ext_resource type="Script" path="res://scenes/levels/outside.gd" id="2_31yh6"]
+[ext_resource type="TileSet" uid="uid://4f1gbjw56iva" path="res://scenes/tilesets/house.tres" id="3_swu28"]
+[ext_resource type="PackedScene" uid="uid://8wbeqndo18wm" path="res://scenes/objects/box.tscn" id="5_8q2nc"]
+[ext_resource type="PackedScene" uid="uid://bgr5qtehnpjqx" path="res://scenes/objects/toilet.tscn" id="6_3h7xi"]
+[ext_resource type="PackedScene" uid="uid://d2nfa6axlwy0k" path="res://scenes/enemies/scout.tscn" id="6_618ah"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iocp7"]
+size = Vector2(194, 736)
+
+[node name="Outside" instance=ExtResource("1_s8e7g")]
+script = ExtResource("2_31yh6")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Ground" index="0"]
+tile_map_data = PackedByteArray("AAACAAIAAAABAAEAAAAAAAIAAAABAAEAAAABAAIAAAABAAEAAAACAAEAAAABAAEAAAABAAEAAAABAAEAAAAAAAEAAAABAAEAAAAAAAAAAAABAAEAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAA=")
+tile_set = ExtResource("3_swu28")
+
+[node name="Box" parent="." index="1" instance=ExtResource("5_8q2nc")]
+position = Vector2(492, -298)
+
+[node name="Toilet" parent="." index="2" instance=ExtResource("6_3h7xi")]
+position = Vector2(914, -256)
+
+[node name="Door" type="Area2D" parent="." index="6"]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door" index="0"]
+position = Vector2(151, 359)
+shape = SubResource("RectangleShape2D_iocp7")
+
+[node name="Scout" parent="Enemies" index="0" instance=ExtResource("6_618ah")]
+position = Vector2(1446, 501)
+
+[connection signal="body_entered" from="Door" to="." method="_on_door_body_entered"]

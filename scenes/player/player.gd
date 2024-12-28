@@ -1,5 +1,5 @@
-extends CharacterBody2D
-
+extends CharacterBody2D;
+class_name Player;
 
 @export var max_speed: int = 700;
 var speed: float = float(max_speed) / 2;
@@ -20,30 +20,29 @@ var weapons_delays: Dictionary = {
 func _ready() -> void:
 	$LaserReloadTimer.wait_time = weapons_delays["laser"];
 	$GranadeReloadTimer.wait_time = weapons_delays["granade"];
-	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	movement();
-
+	
 	# Rotate the player to face the mouse position
 	look_at(get_global_mouse_position());
 	
 	# Laser shooting input
 	var player_direction = (get_global_mouse_position() - position).normalized();
-	if Input.is_action_pressed("primaty-action") and can_laser:
+	if Input.is_action_pressed("primaty-action") and can_laser and Globals.laser_amount > 0:
+		Globals.laser_amount -= 1;
 		# randomly select a marker 2D for the laser start
 		var laser_markers = $LaserStartPositions.get_children();
 		var selected_marker = laser_markers[randi() % laser_markers.size()];
 		can_laser = false;
 		$ShootEffect.emitting = true;
 		laser_input.emit(selected_marker.global_position, player_direction);
-		# emit the position we selected
 		$LaserReloadTimer.start();
 
 	# Granade shooting input	
-	if Input.is_action_pressed("secondary-action") and can_granade:
+	if Input.is_action_pressed("secondary-action") and can_granade and Globals.granade_amount > 0:
+		Globals.granade_amount -= 1;
 		var granade_markers = $LaserStartPositions.get_children();
 		var selected_marker = granade_markers[0];
 		can_granade = false;
@@ -60,12 +59,20 @@ func movement() -> void:
 	else:
 		velocity = direction * speed;
 	move_and_slide();
+	Globals.player_pos = global_position;
 
 func _on_laser_reload_timer_timeout() -> void:
 	can_laser = true;
-	pass # Replace with function body.
-
 
 func _on_granade_reload_timer_timeout() -> void:
 	can_granade = true;
-	pass # Replace with function body.
+
+func hit(damage: int) -> void:
+	print("Player hit by ", damage);
+	Globals.health_amount -= damage;
+	if Globals.health_amount <= 0:
+		die();
+
+func die() -> void:
+	print("Player died");
+	pass;

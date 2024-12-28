@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://boynsbfsaaiy1"]
+
+[ext_resource type="Script" path="res://scenes/objects/item_container.gd" id="1_7kase"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a5s5i"]
+radius = 99.0808
+
+[node name="ItemContainer" type="StaticBody2D" groups=["Container"]]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_7kase")
+
+[node name="BaseSprite" type="Sprite2D" parent="."]
+
+[node name="LidSprite" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_a5s5i")
+
+[node name="SpawnPositions" type="Node2D" parent="."]
