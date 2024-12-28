@@ -68,11 +68,9 @@ func _on_granade_reload_timer_timeout() -> void:
 	can_granade = true;
 
 func hit(damage: int) -> void:
-	print("Player hit by ", damage);
 	Globals.health_amount -= damage;
 	if Globals.health_amount <= 0:
 		die();
 
 func die() -> void:
-	print("Player died");
 	pass;

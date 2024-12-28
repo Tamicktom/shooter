@@ -14,14 +14,9 @@ func explode() -> void:
 	$Explosion.show();
 	$CollisionShape2D.disabled = true;
 	for entity in get_overlapping_bodies():
-		if entity is Player:
-			print("Damage player");
-			entity.hit(100);
-		elif entity is Scout:
-			print("Damage Scout");
-			entity.hit(100);
+		if "hit" in entity:
+			entity.hit(80);
 
 func get_overlapping_bodies() -> Array[Node2D]:
 	var overlapping_bodies: Array[Node2D] = $ExplosionArea.get_overlapping_bodies();
-	print(overlapping_bodies);
 	return overlapping_bodies;

@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bhbx6umvkeoum" path="res://graphics/decals/white.png" id="4_unanu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_382wm"]
-friction = 10.0
-bounce = 0.4
+friction = 20.0
+bounce = 0.2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2fjo5"]
 radius = 74.0608
@@ -205,7 +205,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l7xt5"]
-radius = 203.062
+radius = 165.076
 
 [node name="Granade" type="RigidBody2D" groups=["Entity"]]
 collision_layer = 8

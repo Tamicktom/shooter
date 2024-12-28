@@ -42,6 +42,11 @@ position = Vector2(109, -23)
 [node name="LaserCooldown" type="Timer" parent="."]
 one_shot = true
 
+[node name="DamageImmunityCooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
 [connection signal="timeout" from="LaserCooldown" to="." method="_on_laser_cooldown_timeout"]
+[connection signal="timeout" from="DamageImmunityCooldown" to="." method="_on_damage_immunity_cooldown_timeout"]

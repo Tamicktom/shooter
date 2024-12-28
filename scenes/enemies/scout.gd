@@ -7,7 +7,8 @@ signal laser(pos: Vector2, direction: Vector2);
 var player_nearby: bool = false;
 var can_laser: bool = true;
 var gun_toggle: bool = false;
-var health: int = 100;
+var health: int = 30;
+var is_immune_to_damage: bool = false;
 
 func _process(_delta):
 	if player_nearby:
@@ -35,11 +36,24 @@ func _on_laser_cooldown_timeout() -> void:
 	can_laser = true;
 
 func hit(damage: int) -> void:
-	print("Scout hit by ", damage);
+	# If the scout is immune to damage, do nothing.
+	if is_immune_to_damage:
+		return;
+	
+	# If the scout is not immune to damage, subtract the damage from the health.
 	health -= damage;
+	
+	# If the scout's health is less than or equal to 0, die.
 	if health <= 0:
 		die();
+	
+	# Set the scout to be immune to damage for a short period of time.
+	is_immune_to_damage = true;
+	$DamageImmunityCooldown.start();
 
 func die() -> void:
-	print("Scout died");
 	queue_free();
+
+
+func _on_damage_immunity_cooldown_timeout() -> void:
+	is_immune_to_damage = false;
