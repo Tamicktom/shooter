@@ -49,6 +49,9 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
+[node name="DamageImmunityCooldown" type="Timer" parent="."]
+one_shot = true
+
 [node name="LaserStartPositions" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="LaserStartPositions"]
@@ -74,3 +77,4 @@ occluder = SubResource("OccluderPolygon2D_f2d2s")
 
 [connection signal="timeout" from="LaserReloadTimer" to="." method="_on_laser_reload_timer_timeout"]
 [connection signal="timeout" from="GranadeReloadTimer" to="." method="_on_granade_reload_timer_timeout"]
+[connection signal="timeout" from="DamageImmunityCooldown" to="." method="_on_damage_immunity_cooldown_timeout"]

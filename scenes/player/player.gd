@@ -10,6 +10,7 @@ signal granade_input(pos: Vector2, direction: Vector2);
 
 var can_laser: bool = true;
 var can_granade: bool = true;
+var is_immune_to_damage: bool = false;
 
 var weapons_delays: Dictionary = {
 	"laser": 0.25,
@@ -68,9 +69,24 @@ func _on_granade_reload_timer_timeout() -> void:
 	can_granade = true;
 
 func hit(damage: int) -> void:
+	# If the player is immune to damage, do nothing.
+	if is_immune_to_damage:
+		return;
+	
+	# If the player is not immune to damage, subtract the damage from the health.
 	Globals.health_amount -= damage;
+	
+	# If the player's health is less than or equal to 0, die.
 	if Globals.health_amount <= 0:
 		die();
+	
+	# Set the player to be immune to damage for a short period of time.
+	is_immune_to_damage = true;
+	$DamageImmunityCooldown.start();
 
 func die() -> void:
 	pass;
+
+
+func _on_damage_immunity_cooldown_timeout() -> void:
+	is_immune_to_damage = false;
