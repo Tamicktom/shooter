@@ -50,6 +50,7 @@ func hit(damage: int) -> void:
 	# Set the scout to be immune to damage for a short period of time.
 	is_immune_to_damage = true;
 	$DamageImmunityCooldown.start();
+	$Sprite2D.material.set_shader_parameter("progress", 1.0);
 
 func die() -> void:
 	queue_free();
@@ -57,3 +58,4 @@ func die() -> void:
 
 func _on_damage_immunity_cooldown_timeout() -> void:
 	is_immune_to_damage = false;
+	$Sprite2D.material.set_shader_parameter("progress", 0.0);
